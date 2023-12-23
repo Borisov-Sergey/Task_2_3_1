@@ -1,14 +1,24 @@
 package task.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import task.dao.UserDao;
 import task.model.User;
 
 import java.util.List;
 
-@Component
+@Service
+@Transactional
 public class UserServiceImpl implements UserService {
-    private UserDao userDao;
+
+    private final UserDao userDao;
+    @Autowired
+    public UserServiceImpl(UserDao userDao) {
+        this.userDao = userDao;
+    }
+
     @Override
     public void save(User user) {
         userDao.save(user);

@@ -2,11 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>New user</title>
+    <title>Update user</title>
 </head>
 <body>
 
-<form method="post" th:action="@{/users/new}" th:object="${user}">
+<form method="post" th:action="@{/users/update}" th:object="${userUpdate}">
     <label for="name">Name: </label>
     <input type="text" th:field="*{name}" id="name"/>
 
@@ -22,7 +22,7 @@
 
     <br/>
 
-    <input type="submit" value="Create!"/>
+    <input type="submit" value="Update!"/>
 </form>
 
 </body>

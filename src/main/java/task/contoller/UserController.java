@@ -23,10 +23,16 @@ public class UserController {
         return "all";
     }
 
-    @GetMapping(value = "/user")
-    public String user(@RequestParam(value = "id", required = false) Long id, ModelMap model) {
-        model.addAttribute("user", userService.getById(id));
-        return "user";
+    @GetMapping(value = "/update")
+    public String update(@RequestParam(value = "id", required = false) Long id, ModelMap model) {
+        model.addAttribute("userUpdate", userService.getById(id));
+        return "userUpdate";
+    }
+
+    @PostMapping(value = "/update")
+    public String updating(@ModelAttribute User user) {
+        userService.update(user);
+        return "redirect:/users/";
     }
 
     @GetMapping(value = "/new")
@@ -35,9 +41,15 @@ public class UserController {
         return "new";
     }
 
-    @PostMapping()
-    public String save(@ModelAttribute("user") User user) {
+    @PostMapping(value = "/new")
+    public String save(@ModelAttribute User user) {
         userService.save(user);
+        return "redirect:/users/";
+    }
+
+    @GetMapping(value = "/delete")
+    public String delete(@RequestParam(value = "id", required = false) Long id) {
+        userService.removeById(id);
         return "redirect:/users/";
     }
 
