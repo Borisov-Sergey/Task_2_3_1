@@ -13,18 +13,22 @@ public class User {
     private String name;
     @Column(name = "last_name")
     private String lastName;
+    @Column(name = "email")
+    private String email;
 
     @Column(name = "age")
-    private byte age;
+    private int age;
 
     public User() {
     }
-    
-    public User(String name, String lastName, byte age) {
+
+    public User(String name, String lastName, String email, int age) {
         this.name = name;
         this.lastName = lastName;
+        this.email = email;
         this.age = age;
     }
+
     public String getName() {
         return name;
     }
@@ -41,11 +45,11 @@ public class User {
         this.lastName = lastName;
     }
 
-    public byte getAge() {
+    public int getAge() {
         return age;
     }
 
-    public void setAge(byte age) {
+    public void setAge(int age) {
         this.age = age;
     }
 
@@ -57,13 +61,22 @@ public class User {
         this.id = id;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     @Override
     public String toString() {
-        return "User [" +
-                " id = " + id +
+        return "User {" +
+                "id = " + id +
                 ", name = " + name +
                 ", lastName = " + lastName +
+                ", email = " + email +
                 ", age = " + age +
-                ']';
+                '}';
     }
 }
